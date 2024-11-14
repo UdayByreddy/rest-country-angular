@@ -1,0 +1,62 @@
+<div *ngIf="!isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="p-2" *ngIf="isLoading">
+  <a [routerLink]="['']" class="cursor-pointer p-4 rounded-xl">
+    <span class="material-icons">arrow_left</span>
+  </a>
+
+  <div class="flex flex-col w-full p-4 lg:flex-row lg:justify-start justify-center items-center">
+    
+    <div class="image-tile flex justify-center items-center my-4 lg:w-1/2">
+      <img src="{{ country?.flag }}" alt="{{ country?.name }} flag" class="w-4/5 h-3/5" />
+    </div>
+
+  
+    <div class="details-tile flex flex-col text-lg justify-center items-center mx-4">
+      <div class="my-4 mr-4">
+        <h3 class="font-semibold">{{ country?.name }}</h3>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-3">
+  
+        <div class="ml-3 my-2 mb-2 text-sm lg:text-lg">
+          <p><span class="font-bold">Native Name:</span> {{ country?.nativeName }}</p>
+          <p><span class="font-bold">Population:</span> {{ country?.population | number }}</p>
+          <p><span class="font-bold">Region:</span> {{ country?.Region }}</p>
+          <p><span class="font-bold">Capital:</span> {{ country?.Capital }}</p>
+          <p><span class="font-bold">Subregion:</span> {{ country?.subregion }}</p>
+        </div>
+
+ 
+        <div class="ml-3 my-2 mb-2 text-sm lg:text-lg">
+          <p><span class="font-bold">Top Level Domain:</span> {{ country?.tld }}</p>
+          <p><span class="font-bold">Currencies:</span> 
+            {{ country?.currencies}}
+          </p>          
+          <p><span class="font-bold">Languages:</span> {{country?.languages}}</p>
+        </div>
+      </div>
+
+ 
+      <div class="ml-3 text-sm mb-2 md:text-sm lg:w-full lg:text-lg">
+        <p class="mb-2 font-bold text-lg">Border Countries:</p>
+      
+        
+        <div class="flex flex-wrap overflow-x-auto max-w-lg space-x-2">
+          <ng-container *ngIf="country?.borders && country?.borders?.length; else noBorders">
+            <a *ngFor="let border of country?.borders" [routerLink]="['/country', border[0]]" class="p-3 m-2 font-normal rounded-sm shadow-md">
+              {{ border[0] }}
+            </a>
+          </ng-container>
+      
+         
+          <ng-template #noBorders>
+            <span class="p-3 m-2 font-normal rounded-sm shadow-md">No borders</span>
+          </ng-template>
+        </div>
+
+      </div>
+      
+  </div>
+</div>
