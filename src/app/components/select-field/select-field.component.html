@@ -1,0 +1,56 @@
+<div class="function">
+    <mat-form-field class="form-field">
+      <input matInput type="text" placeholder="Enter the country" class="text-input" [(ngModel)]="Inputvalue" name="Inputvalue">
+      <button *ngIf="Inputvalue" matSuffix mat-icon-button aria-label="Clear" (click)="Inputvalue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  
+    <mat-form-field class="form-field">
+      <mat-label>Select Region</mat-label>
+      <mat-select [(value)]="Region">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div class="sub-forms">
+    <mat-form-field class="form-field">
+      <mat-label>Filter By Population</mat-label>
+      <mat-select [(value)]="Population">
+        <mat-option *ngFor="let option of PopulationOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="form-field">
+      <mat-label>Filter By Area</mat-label>
+      <mat-select [(value)]="Area">
+        <mat-option *ngFor="let option of AreaOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="form-field">
+      <mat-label>Filter By SubRegion</mat-label>
+      <mat-select [(value)]="Subregion">
+        <mat-option *ngFor="let option of subRegion" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <app-all-countries 
+    [input]="Inputvalue" 
+    [selectRegion]="Region" 
+    [selectPopulation]="Population" 
+    [selectArea]="Area" 
+    [selectSubRegion]="Subregion" 
+    (subRegionsArray)="handleSubRegions($event)">
+  </app-all-countries>
+  

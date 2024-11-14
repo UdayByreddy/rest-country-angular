@@ -1,0 +1,58 @@
+
+  .form-field{
+    width: 18rem;
+    padding: 0.7rem;
+  }
+  .function {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap; 
+  }
+  
+  .sub-forms {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap; 
+  }
+  
+  .Population-dropdown,
+  .Area-dropdown,
+  .Subregion-dropdown {
+    width: 200px;
+  }
+  
+  
+  @media (min-width: 768px) {
+    .function,
+    .sub-forms {
+      justify-content: space-between;
+    }
+  
+    .example-form-field,
+    .Population-dropdown,
+    .Area-dropdown,
+    .Subregion-dropdown {
+      width: 48%;
+    }
+  }
+  
+
+  @media (max-width: 767px) {
+    .function,
+    .sub-forms {
+      flex-direction: column; 
+      padding: 0;
+    }
+  
+    .example-form-field,
+    .Population-dropdown,
+    .Area-dropdown,
+    .Subregion-dropdown {
+      width: 100%;
+    }
+  }
+  
