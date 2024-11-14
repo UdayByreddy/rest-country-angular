@@ -1,0 +1,22 @@
+<mat-toolbar class="header shadow-2xl"  [ngStyle]="{
+    'background-color': toggleState ? '#293541' : 'white',
+    'color': toggleState ?'white':'black'
+  }">
+   <a [routerLink]="['']"><span class="heading">Where in the World</span></a>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="toggleMode()">
+        <mat-icon  [ngStyle]="{
+            'background-color': toggleState ? '#293541' : 'white',
+            'color': toggleState ?'white':'black'
+          }">{{ toggleState  ? 'light_mode' : 'dark_mode'}}</mat-icon>
+    </button>
+    <button mat-button  [ngStyle]="{
+        'background-color': toggleState ? '#293541' : 'white',
+        'color': toggleState ?'white':'black'
+      }">
+        {{ toggleState ? 'light_mode' : 'dark_mode'}}
+    </button>
+  </mat-toolbar>
+  <router-outlet>
+
+  </router-outlet>
