@@ -1,0 +1,27 @@
+<div *ngIf="!isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<mat-grid-list class="w-full m-0 rounded-lg" [cols]="cols" rowHeight="350px" gutterSize="16px" *ngIf="isLoading">
+  <mat-grid-tile *ngFor="let country of filteredCountries">
+    <mat-card 
+      class="flex flex-col justify-between h-96 transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-xl"
+      matRipple 
+      [routerLink]="['/country', country.name]" 
+      [ngStyle]="{
+        'background-color': toggleState ? '#293541' : 'white',
+        'color': toggleState ? 'white' : 'black'
+      }">
+      <div class="w-full h-1/2 overflow-hidden">
+        <img mat-card-image [src]="country.flag" alt="flag" class="w-full h-auto object-cover rounded-t-lg" />
+      </div>
+      <mat-card-content>
+        <div class="p-2">
+          <p class="text-xl mb-2 font-semibold">{{ country.name }}</p>
+          <p>Population: {{ country.population.toLocaleString()}}</p>
+          <p>Region: {{ country.Region }}</p>
+          <p>Capital: {{country.Capital}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
